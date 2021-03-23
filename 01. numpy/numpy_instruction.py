@@ -25,3 +25,25 @@ print(sequence_array)
 zero_array = np.zeros((3, 2), dtype='int32')
 one_array = np.ones((4, 3), dtype='int32')
 print(zero_array, '\n', one_array)
+
+reshaped_array1 = sequence_array.reshape(2, 5)
+reshaped_array2 = sequence_array.reshape(5, 2)
+print(reshaped_array1, '\n', reshaped_array2)
+# -1을 reshape인자로 넣을 경우 가능한 최대의 행 혹은 열로 확장된다.
+reshaped_array3 = sequence_array.reshape(-1, 5)
+reshaped_array4 = sequence_array.reshape(5, -1)
+
+# numpy array를 list로 캐스팅
+list3 = reshaped_array3.tolist()
+print(list3, type(list3))
+
+# 3차원 array
+array = np.arange(8)
+array3d = array.reshape((2, 2, 2))
+print(array3d, array3d.shape)
+
+# 3차원 행렬을 2차원으로 변환
+array2d = array3d.reshape((-1, 1))
+print(array2d, array2d.shape)
+
+

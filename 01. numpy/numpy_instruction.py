@@ -62,4 +62,6 @@ print(array2d[1])
 print(array2d[0:2, 1:2])
 
 # 팬시 인덱싱
-
+print(array2d[0:2])  # 인덱싱
+print(array2d[[0, 1]])  # 팬시 인덱싱
+print(array2d[[0, 1], 1:2])  # 0, 1행의 1번째 열

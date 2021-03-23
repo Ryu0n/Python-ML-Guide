@@ -46,4 +46,20 @@ print(array3d, array3d.shape)
 array2d = array3d.reshape((-1, 1))
 print(array2d, array2d.shape)
 
+# 인덱싱
+array1 = np.arange(start=1, stop=10)
+print(array1, array1[0], array1[-1])
+array1[0] = 9
+print(array1)
+
+array2d = array1.reshape((3, 3))
+print(array2d, array2d[0, 2], array2d[1, 1], array2d[2, 0])
+
+# 슬라이싱
+print(array1[0:3])
+print(array1[:3], array1[3:])
+print(array2d[1])
+print(array2d[0:2, 1:2])
+
+# 팬시 인덱싱
 

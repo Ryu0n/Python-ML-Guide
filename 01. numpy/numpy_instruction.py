@@ -65,3 +65,18 @@ print(array2d[0:2, 1:2])
 print(array2d[0:2])  # 인덱싱
 print(array2d[[0, 1]])  # 팬시 인덱싱
 print(array2d[[0, 1], 1:2])  # 0, 1행의 1번째 열
+
+# 불린 인덱싱
+print(array1 > 5, type(array1 > 5))
+print(array1[array1 > 5])
+
+# True에 해당하는 요소만 출력
+print(array1)  # [9 2 3 4 5 6 7 8 9]
+bool_indexes = array1 > 5
+print(array1[bool_indexes])  # [9 6 7 8 9]
+# 0번째 요소만 출력, 나머지 요소는 False
+indexes = np.array([0])
+print(array1[indexes])  # [9]
+# 0, 2, 4번째 요소만 출력
+indexes = np.array([0, 2, 4])
+print(array1[indexes])  # [9 3 5]

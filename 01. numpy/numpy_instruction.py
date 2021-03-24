@@ -80,3 +80,21 @@ print(array1[indexes])  # [9]
 # 0, 2, 4번째 요소만 출력
 indexes = np.array([0, 2, 4])
 print(array1[indexes])  # [9 3 5]
+
+# 행렬 정렬 - np.sort() : immutable
+org_array = np.array([3, 1, 9, 5])
+sort_array = np.sort(org_array)
+print(org_array, sort_array)
+# 행렬 정렬 - ndarray.sort() : mutable
+org_array.sort()
+print(org_array)
+# 역정렬
+reversed_array = np.sort(org_array)[::-1]
+print(reversed_array)
+# 2차원 행렬 정렬
+array2d = np.array([[8, 12],
+                    [7, 1]])
+sorted_array_axis0 = np.sort(array2d, axis=0)  # 열 기준 정렬
+sorted_array_axis1 = np.sort(array2d, axis=1)  # 행 기준 정렬
+print(sorted_array_axis0)
+print(sorted_array_axis1)

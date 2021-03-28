@@ -98,3 +98,27 @@ sorted_array_axis0 = np.sort(array2d, axis=0)  # 열 기준 정렬
 sorted_array_axis1 = np.sort(array2d, axis=1)  # 행 기준 정렬
 print(sorted_array_axis0)
 print(sorted_array_axis1)
+
+# argsort - 원본 행렬이 정렬되었을 때, 원본행렬의 원소에 대한 인덱스가 필요할 경우
+org_array = np.array([3, 1, 9, 5])
+# 작은 값부터 순서대로 데이터의 index를 반환해줌
+sort_indices = np.argsort(org_array)  # 오름차순으로 정렬된 인덱스 [1 0 3 2]
+"""
+과정
+1. [3, 1, 9, 5] -> [0, 1, 2, 3] 인덱스를 가지고 있음
+2. [3, 1, 9, 5] -> [1, 3, 5, 9] 오름차순으로 정렬
+3. [1, 3, 5, 9] -> [1, 0, 3, 2] 정렬된 각 원소를 원본배열로부터의 인덱스로 치환
+"""
+
+# 큰 값부터 순서대로 데이터의 index를 반환해줌
+sort_indices_desc = np.argsort(org_array)[::-1]  # 내림차순으로 정렬된 인덱스 [2 3 0 1]
+
+print(sort_indices)
+print(sort_indices_desc)
+
+name_array = np.array(['John', 'Mike', 'Sarah', 'Kate', 'Samuel'])
+score_array = np.array([78, 95, 84, 98, 88])
+sort_indices_asc = np.argsort(score_array)
+
+print(sort_indices_asc)  # [0 2 4 1 3]
+print(name_array[sort_indices_asc])  # fancy indexing : ['John' 'Sarah' 'Samuel' 'Mike' 'Kate']

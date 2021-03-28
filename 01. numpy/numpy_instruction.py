@@ -122,3 +122,10 @@ sort_indices_asc = np.argsort(score_array)
 
 print(sort_indices_asc)  # [0 2 4 1 3]
 print(name_array[sort_indices_asc])  # fancy indexing : ['John' 'Sarah' 'Samuel' 'Mike' 'Kate']
+
+# A = np.array([[1, 2, 3], [4, 5, 6]])
+A = np.arange(1, 7).reshape((2, 3))
+# B = np.array([[7, 8], [9, 10], [11, 12]])
+B = np.arange(7, 13).reshape((3, 2))
+print(A @ B, '\n', np.dot(A, B))
+print(B.T, '\n', np.transpose(B))

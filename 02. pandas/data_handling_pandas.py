@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 """
 index : RDBMS의 PK처럼 개별 데이터를 고유하게 식별하는 key값
@@ -23,4 +24,35 @@ print(pclass_series.head())  # seires의 인덱스, series의 데이터값
 print(pclass_series.value_counts())  # 각 도메인의 갯수 (분포도 파악에 유리하다.)
 print(pclass_series.value_counts().head(1))
 
+# 컬렉션 -> DataFrame (1)
+col_name1 = ['col1']
+list1 = [1, 2, 3]
+array1 = np.array(list1)
+df_list1 = pd.DataFrame(data=list1, columns=col_name1)
+df_array1 = pd.DataFrame(data=array1, columns=col_name1)
+print('df_list : \n', df_list1)
+print('df_array : \n', df_array1)
 
+# 컬렉션 -> DataFrame (2)
+col_name2 = [
+    'col1',
+    'col2',
+    'col3'
+]
+list2 = [[1, 2, 3],
+         [11, 12, 13]]
+df_array2 = pd.DataFrame(data=list2, columns=col_name2)
+print('df_array2 : \n', df_array2)
+
+# 컬렉션 -> DataFrame (3)
+dictionary = {'col1': [1, 11], 'col2': [2, 22], 'col3': [3, 33]}
+df_dict = pd.DataFrame(dictionary)
+print('df_dict : \n', df_dict)
+
+# DataFrame -> 컬렉션 (1)
+array3 = df_dict.values
+list3 = array3.tolist()
+dict3 = df_dict.to_dict()
+print(array3, list3)
+print(dict3)
+print(df_dict.axes)

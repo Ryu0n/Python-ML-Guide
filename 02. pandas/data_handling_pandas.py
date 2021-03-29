@@ -18,4 +18,9 @@ print(titanic_df.head(3).shape)
 print(titanic_df.info())
 print(titanic_df.describe())  # 25% (0~25% 백분위수), 50(25~50%), .. / 50백분위수는 중앙값과 같다
 
+pclass_series = titanic_df['Pclass']  # Serires 인스턴스
+print(pclass_series.head())  # seires의 인덱스, series의 데이터값
+print(pclass_series.value_counts())  # 각 도메인의 갯수 (분포도 파악에 유리하다.)
+print(pclass_series.value_counts().head(1))
+
 

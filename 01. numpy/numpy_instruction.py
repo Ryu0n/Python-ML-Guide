@@ -127,5 +127,13 @@ print(name_array[sort_indices_asc])  # fancy indexing : ['John' 'Sarah' 'Samuel'
 A = np.arange(1, 7).reshape((2, 3))
 # B = np.array([[7, 8], [9, 10], [11, 12]])
 B = np.arange(7, 13).reshape((3, 2))
-print(A @ B, '\n', np.dot(A, B))
+
 print(B.T, '\n', np.transpose(B))
+print(A @ B, '\n', np.dot(A, B))
+
+print('\n here')
+C = np.arange(1, 13).reshape((2, 2, 3))
+D = np.arange(1, 13).reshape((2, 3, 2))
+print(C, '\n', D)
+print(np.dot(C, D))
+print(np.matmul(C, D))

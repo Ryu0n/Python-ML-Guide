@@ -78,4 +78,5 @@ print(titanic_drop_df.head(3))
 drop_result = titanic_df.drop(['Age_0', 'Age_by_10', 'Family_No'], axis=1, inplace=True)
 print(drop_result, '\n', titanic_df)  # None, DataFrame
 
+# index 객체
 

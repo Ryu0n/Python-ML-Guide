@@ -56,3 +56,26 @@ dict3 = df_dict.to_dict()
 print(array3, list3)
 print(dict3)
 print(df_dict.axes)
+
+# 새로운 칼럼 추가
+titanic_df['Age_0'] = 0
+print(titanic_df.head(3))
+# 기존 DataFrame의 Series를 통해 새로운 칼럼 추가
+titanic_df['Age_by_10'] = titanic_df['Age'] * 10
+titanic_df['Family_No'] = titanic_df['SibSp'] + titanic_df['Parch'] + 1
+print(titanic_df.head(3))
+# 브로드캐스팅 연산
+titanic_df['Age_by_10'] += 100
+print(titanic_df.head(3))
+
+# DataFrame 데이터삭제
+# DataFrame.drop()
+# - axis=0 : (열방향)행 삭제 / axis=1 : (행방향)컬럼 삭제
+# - inplace=True : immutable (자기자신 수정) / inplace=False : mutable (자기자신 수정 x)
+titanic_drop_df = titanic_df.drop('Age_0', axis=1)
+print(titanic_drop_df.head(3))
+# inplace=True 일 경우 mutable 이므로 None 반환, 원본 인스턴스에 변화
+drop_result = titanic_df.drop(['Age_0', 'Age_by_10', 'Family_No'], axis=1, inplace=True)
+print(drop_result, '\n', titanic_df)  # None, DataFrame
+
+

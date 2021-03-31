@@ -7,6 +7,7 @@ from sklearn import metrics
 from sklearn.utils import Bunch
 
 iris: Bunch = datasets.load_iris()
+print(iris.keys())  # dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename'])
 
 # 레이블, 레이블명
 iris_target = iris.target
@@ -37,3 +38,4 @@ dt_clf.fit(X_train, y_train)
 pred = dt_clf.predict(X_test)
 accuracy = metrics.accuracy_score(y_test, pred)  # 실제 정답, 예측 답 비교
 print('정확도 : {0: 4f}'.format(accuracy))
+

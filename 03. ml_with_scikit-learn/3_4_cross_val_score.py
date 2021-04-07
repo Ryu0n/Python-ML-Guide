@@ -28,6 +28,6 @@ data = iris_data.data
 label = iris_data.target
 
 scores = cross_val_score(dt_clf, data, label, scoring='accuracy', cv=3)
-print(scores)  # 폴드별 정확도
+print(scores)  # 각 폴드의 정확도
 print(np.round(scores, 4))  # 교차 검증별 정확도
 print(np.round(np.mean(scores), 4))  # 평균 검증 정확도

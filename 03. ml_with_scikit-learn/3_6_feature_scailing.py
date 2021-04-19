@@ -24,6 +24,7 @@ stdev : 표준편차
 
 xi_new = (xi-min(x)) / (max(x)-min(x))
 """
+import numpy as np
 import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
@@ -64,3 +65,34 @@ print(iris_normalized_df.min(), '\n')  # 정규화된 feature 들의 최소값
 print(iris_normalized_df.max(), '\n')  # 정규화된 feature 들의 최대값
 print(iris_normalized_df.mean(), '\n')  # 정규화된 feature 들의 평균값
 print(iris_normalized_df.var(), '\n')  # 정규화된 feature 들의 분산값
+
+"""
+scaler 인스턴스를 통해 스케일링을 진행할 때 유의해야할 점
+
+fit() 메소드는 데이터 변환을 위한 기준 정보 (데이터 세트의 최소, 최대값 등)을 설정하는 역할을 하고
+transform() 메소드는 설정된 기준을 토대로 데이터를 변환한다.
+
+즉, 테스트 데이터에 스케일링을 진행할 때 테스트 데이터 세트에 fit()을 수행한 결과로 transform()을 수행해야 한다.
+그렇지 않으면 학습 데이터 세트와 테스트 데이터 세트의 기준 정보가 서로 달라진다.
+"""
+train_array = np.arange(0, 11).reshape(-1, 1)  # 2차원으로 reshape
+test_array = np.arange(0, 6).reshape(-1, 1)
+
+# fit : train, transform : train
+scaler = MinMaxScaler()
+scaler.fit(train_array)
+train_scaled = scaler.transform(train_array)
+print('원본 train set : ', train_array.reshape(-1))  # [ 0  1  2  3  4  5  6  7  8  9 10]
+print('스케일 train set : ', train_scaled.reshape(-1))  # [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1. ]
+
+# fit : test, transform : test
+scaler.fit(test_array)
+test_scaled = scaler.transform(test_array)
+print('원본 test set : ', test_array.reshape(-1))  # [0 1 2 3 4 5]
+print('스케일 test set : ', test_scaled.reshape(-1))  # [0.  0.2 0.4 0.6 0.8 1. ]
+
+# fit : train, transform : test
+scaler.fit(train_array)
+test_scaled = scaler.transform(test_array)
+print('원본 test set : ', test_array.reshape(-1))  # [0 1 2 3 4 5]
+print('스케일 test set : ', test_scaled.reshape(-1))  # [0.  0.1 0.2 0.3 0.4 0.5]

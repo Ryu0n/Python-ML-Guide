@@ -59,7 +59,6 @@ min_max_scaler.fit(iris_df)
 iris_normalized = min_max_scaler.transform(iris_df)
 iris_normalized_df = pd.DataFrame(data=iris_normalized, columns=iris_feature_names)
 
-print(iris_normalized, '\n')
 print(iris_normalized_df, '\n')
 print(iris_normalized_df.min(), '\n')  # 정규화된 feature 들의 최소값
 print(iris_normalized_df.max(), '\n')  # 정규화된 feature 들의 최대값

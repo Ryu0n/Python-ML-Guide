@@ -79,4 +79,15 @@ drop_result = titanic_df.drop(['Age_0', 'Age_by_10', 'Family_No'], axis=1, inpla
 print(drop_result, '\n', titanic_df)  # None, DataFrame
 
 # index 객체
-
+# index는 pk처럼 DataFrame, Series의 레코드를 고유하게 식별하는 객체이다.
+titanic_df = pd.read_csv('../datas/titanic_train.csv')
+indexes = titanic_df.index
+print('indexes \n', indexes)
+print('indexes.values \n', indexes.values)
+print(type(indexes.values))
+print(indexes.values.shape)
+print(indexes[:5].values)
+print(indexes.values[:5])
+print(indexes[6])
+# 인덱스의 값은 수정 불가능
+# indexes[0] = 5  # raise TypeError("Index does not support mutable operations")

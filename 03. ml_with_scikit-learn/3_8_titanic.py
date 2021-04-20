@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
 titanic_df = pd.read_csv('../datas/titanic_train.csv')
 print(titanic_df.head(3))
 print(titanic_df.info())
@@ -34,4 +33,33 @@ plt.show()
 
 # Pclass : 객실
 sns.barplot(x='Pclass', y='Survived', hue='Sex', data=titanic_df)
+plt.show()
+
+
+def get_category(age):
+    cat = ''
+    if age <= -1:
+        cat = 'Unknown'
+    elif age <= 5:
+        cat = 'Baby'
+    elif age <= 12:
+        cat = 'Child'
+    elif age <= 18:
+        cat = 'Teenager'
+    elif age <= 25:
+        cat = 'Student'
+    elif age <= 35:
+        cat = 'Young Adult'
+    elif age <= 60:
+        cat = 'Adult'
+    else:
+        cat = 'Elderly'
+    return cat
+
+
+plt.figure(figsize=(10, 6))
+group_names = ['Unknown', 'Baby', 'Child', 'Teenager', 'Student', 'Young Adult', 'Adult', 'Elderly']
+titanic_df['Age_cat'] = titanic_df['Age'].apply(lambda x: get_category(x))
+sns.barplot(x='Age_cat', y='Survived', hue='Sex', data=titanic_df, order=group_names)
+titanic_df.drop('Age_cat', axis=1, inplace=True)
 plt.show()
